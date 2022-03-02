@@ -1,26 +1,82 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <CustomInput
+    label='Name'
+    v-model="name"
+    type='text'
+   /> <br>
+   <CustomInput
+    label='Last name'
+    v-model="lastName"
+    type='text'
+   /> <br>
+   <CustomInput
+    label='Hobbies'
+    v-model="hobbies.music"
+    type='text'
+   />
+
+   <p>{{name}}</p>
+   <p>{{lastName}}</p>
+   <p>{{hobbies.music}}</p>
+
+  <CustomSelect
+    :options='newArray'
+    label='Custom Select'
+    v-model="opt"
+  />
+
+  {{opt}}
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import {reactive, ref, toRefs } from 'vue';
+
+import CustomInput from './components/CustomInput.vue'
+import CustomSelect from './components/CustomSelect.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CustomInput,
+    CustomSelect,
+  },
+  setup() {
+    const opt = ref();
+    const variables = reactive({
+      name: '',
+      lastName: '', 
+      age: null,
+      hobbies: {
+        music: '',
+        sports: '',
+        arts: '',
+        read: '',
+      }
+    });
+
+     const newArray = [
+        'sustainability',
+        'nature',
+        'animal welfare',
+        'housing',
+        'education',
+        'food',
+        'community'
+      ];
+
+    return { ...toRefs(variables), newArray, opt }
   }
 }
+
+
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .input {
+    margin-left: 20px;
+  }
+
 </style>
