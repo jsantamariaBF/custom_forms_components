@@ -14,19 +14,11 @@
     v-model="hobbies.music"
     type='text'
    />
-
-   <p>{{name}}</p>
-   <p>{{lastName}}</p>
-   <p>{{hobbies.music}}</p>
-
   <CustomSelect
     :options='newArray'
     label='Custom Select'
     v-model="opt"
   />
-
-  {{opt}}
-
 </template>
 
 <script>
