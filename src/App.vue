@@ -3,21 +3,29 @@
     label='Name'
     v-model="name"
     type='text'
-   /> <br>
+   /> <br><br>
    <CustomInput
     label='Last name'
     v-model="lastName"
     type='text'
-   /> <br>
+   /> <br><br>
    <CustomInput
     label='Hobbies'
     v-model="hobbies.music"
     type='text'
-   />
+   /> <br><br>
   <CustomSelect
     :options='newArray'
     label='Custom Select'
     v-model="opt"
+  /> <br> <br>
+  <CustomCheckbox 
+    label="First Option"
+    v-model="first"
+  /> <br>
+   <CustomCheckbox 
+    label="Second Option"
+    v-model="second"
   />
 </template>
 
@@ -27,12 +35,14 @@ import {reactive, ref, toRefs } from 'vue';
 
 import CustomInput from './components/CustomInput.vue'
 import CustomSelect from './components/CustomSelect.vue'
+import CustomCheckbox from './components/CustomCheckbox.vue'
 
 export default {
   name: 'App',
   components: {
     CustomInput,
     CustomSelect,
+    CustomCheckbox,
   },
   setup() {
     const opt = ref();
@@ -45,7 +55,12 @@ export default {
         sports: '',
         arts: '',
         read: '',
-      }
+      },
+    });
+
+    const booleans = reactive({
+      first: false,
+      second: true,
     });
 
      const newArray = [
@@ -58,7 +73,7 @@ export default {
         'community'
       ];
 
-    return { ...toRefs(variables), newArray, opt }
+    return { ...toRefs(variables), ...toRefs(booleans), newArray, opt, }
   }
 }
 

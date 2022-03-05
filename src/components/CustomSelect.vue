@@ -1,5 +1,5 @@
 <template>
-<label for="" v-if="label">{{label}}</label>
+    <label for="" v-if="label">{{label}}</label>
     <select 
         v-bind="{...$attrs, 
             onChange: ($event) => { $emit('update:modelValue', $event.target.value) }}"
