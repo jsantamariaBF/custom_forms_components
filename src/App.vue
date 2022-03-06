@@ -22,16 +22,16 @@
   <CustomCheckbox 
     label="First Option"
     v-model="first"
-  /> <br>
+  /> <br><br>
    <CustomCheckbox 
     label="Second Option"
     v-model="second"
-  /> <br>
+  /> <br><br>
   <CustomRadio
     label="Dog"
     :value="0"
     v-model="options"
-  />
+  /> 
   <CustomRadio
     label="Cat"
     :value="1"
@@ -40,59 +40,56 @@
 </template>
 
 <script>
+  import { reactive, ref, toRefs } from 'vue';
 
-import {reactive, ref, toRefs } from 'vue';
-
-import CustomInput from './components/CustomInput.vue'
-import CustomSelect from './components/CustomSelect.vue'
-import CustomCheckbox from './components/CustomCheckbox.vue'
-import CustomRadio from './components/CustomRadio.vue'
+  import CustomInput from './components/CustomInput.vue'
+  import CustomSelect from './components/CustomSelect.vue'
+  import CustomCheckbox from './components/CustomCheckbox.vue'
+  import CustomRadio from './components/CustomRadio.vue'
 
 
-export default {
-  name: 'App',
-  components: {
-    CustomInput,
-    CustomSelect,
-    CustomCheckbox,
-    CustomRadio,
-  },
-  setup() {
-    const opt = ref();
-    const variables = reactive({
-      name: '',
-      lastName: '', 
-      age: null,
-      hobbies: {
-        music: '',
-        sports: '',
-        arts: '',
-        read: '',
-      },
-    });
+  export default {
+    name: 'App',
+    components: {
+      CustomInput,
+      CustomSelect,
+      CustomCheckbox,
+      CustomRadio,
+    },
+    setup() {
+      const opt = ref();
+      const variables = reactive({
+        name: '',
+        lastName: '', 
+        age: null,
+        hobbies: {
+          music: '',
+          sports: '',
+          arts: '',
+          read: '',
+        },
+      });
 
-    const booleans = reactive({
-      first: false,
-      second: true,
-    });
+      const booleans = reactive({
+        first: false,
+        second: true,
+      });
 
-    const options = ref('')
+      const options = ref('')
 
-     const newArray = [
-        'sustainability',
-        'nature',
-        'animal welfare',
-        'housing',
-        'education',
-        'food',
-        'community'
-      ];
+      const newArray = [
+          'sustainability',
+          'nature',
+          'animal welfare',
+          'housing',
+          'education',
+          'food',
+          'community'
+        ];
 
-    return { ...toRefs(variables), ...toRefs(booleans), options, newArray, opt,  }
+      return { ...toRefs(variables), ...toRefs(booleans), options, newArray, opt,  }
+    }
   }
-}
-
-
 
 </script>
 
