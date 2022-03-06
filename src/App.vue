@@ -26,6 +26,16 @@
    <CustomCheckbox 
     label="Second Option"
     v-model="second"
+  /> <br>
+  <CustomRadio
+    label="Dog"
+    :value="0"
+    v-model="options"
+  />
+  <CustomRadio
+    label="Cat"
+    :value="1"
+    v-model="options"
   />
 </template>
 
@@ -36,6 +46,8 @@ import {reactive, ref, toRefs } from 'vue';
 import CustomInput from './components/CustomInput.vue'
 import CustomSelect from './components/CustomSelect.vue'
 import CustomCheckbox from './components/CustomCheckbox.vue'
+import CustomRadio from './components/CustomRadio.vue'
+
 
 export default {
   name: 'App',
@@ -43,6 +55,7 @@ export default {
     CustomInput,
     CustomSelect,
     CustomCheckbox,
+    CustomRadio,
   },
   setup() {
     const opt = ref();
@@ -63,6 +76,8 @@ export default {
       second: true,
     });
 
+    const options = ref('')
+
      const newArray = [
         'sustainability',
         'nature',
@@ -73,7 +88,7 @@ export default {
         'community'
       ];
 
-    return { ...toRefs(variables), ...toRefs(booleans), newArray, opt, }
+    return { ...toRefs(variables), ...toRefs(booleans), options, newArray, opt,  }
   }
 }
 
